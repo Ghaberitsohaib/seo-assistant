@@ -6,7 +6,7 @@ Assistant d'optimisation SEO intelligent basé sur l'IA.
 
 - **Backend**: Python 3.11+, FastAPI, SQLAlchemy, PostgreSQL
 - **Frontend**: React 18, Vite, Tailwind CSS
-- **IA**: OpenAI GPT-4o, spaCy
+- **IA**: Google Gemini, spaCy
 - **Base de données**: PostgreSQL
 - **Conteneurisation**: Docker, Docker Compose
 
@@ -76,8 +76,8 @@ npm run dev
 ```env
 DATABASE_URL=postgresql://user:password@localhost:5432/seo_assistant
 SECRET_KEY=votre-cle-secrete
-OPENAI_API_KEY=votre-cle-api-openai
-OPENAI_MODEL=gpt-4o
+GEMINI_API_KEY=votre-cle-api-gemini
+GEMINI_MODEL=gemini-1.5-pro
 ```
 
 ## Fonctionnalités
