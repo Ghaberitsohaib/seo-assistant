@@ -92,6 +92,7 @@ GEMINI_MODEL=gemini-1.5-pro
 - Recommandations IA personnalisées
 - Historique des analyses
 - Marque-pages et favoris
+- Interface UI/UX moderne avec design 3D holographique (Holographic Torus)
 
 ## API Endpoints
 
