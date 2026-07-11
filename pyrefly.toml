@@ -1,0 +1,5 @@
+search_path = ["backend"]
+python_interpreter = "backend/venv/Scripts/python.exe"
+site_package_path = ["backend/venv/Lib/site-packages"]
+project_includes = ["backend"]
+project_excludes = ["**/.*", "**/*venv/**", "__pycache__"]

@@ -1,0 +1,97 @@
+.holographic-torus-wrapper {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1200px;
+  transform-style: preserve-3d;
+  background: transparent;
+  /* Overall shimmer effect via hue-rotate */
+  animation: torus-shimmer 12s ease-in-out infinite alternate;
+}
+
+@keyframes torus-shimmer {
+  0% { filter: drop-shadow(0 0 20px rgba(255, 42, 95, 0.4)) hue-rotate(0deg); }
+  50% { filter: drop-shadow(0 0 40px rgba(0, 255, 170, 0.6)) hue-rotate(180deg); }
+  100% { filter: drop-shadow(0 0 20px rgba(136, 0, 255, 0.4)) hue-rotate(360deg); }
+}
+
+.torus-glow {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(0, 255, 170, 0.3) 0%, rgba(255, 42, 95, 0.2) 50%, transparent 70%);
+  filter: blur(30px);
+  animation: torus-pulse 4s ease-in-out infinite alternate;
+  transform: translateZ(-50px);
+}
+
+.torus-ring {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  
+  /* Slight organic wobble to simulate a twisted Mobius strip as it rotates */
+  border-radius: 42% 58% 55% 45% / 50% 45% 55% 50%;
+  
+  /* Creates the inner hole of the ring - VERY THIN NOW */
+  -webkit-mask-image: radial-gradient(circle, transparent 88%, black 89%);
+  mask-image: radial-gradient(circle, transparent 88%, black 89%);
+  
+  /* Applies the noise and 3D lighting from the SVG */
+  filter: url(#holographic-noise);
+}
+
+.base-ring {
+  /* Complex iridescent gradient */
+  background: conic-gradient(
+    from 0deg,
+    #ff2a5f,
+    #ff9900,
+    #00ffaa,
+    #0088ff,
+    #8800ff,
+    #ff2a5f
+  );
+  animation: torus-spin-base 12s linear infinite;
+}
+
+.overlay-ring {
+  background: conic-gradient(
+    from 180deg,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(0, 255, 170, 0.1) 20%,
+    rgba(255, 42, 95, 0.8) 40%,
+    rgba(0, 136, 255, 0.1) 60%,
+    rgba(255, 255, 255, 0.9) 80%,
+    rgba(0, 255, 170, 0.1) 100%
+  );
+  mix-blend-mode: overlay;
+  /* TranslateZ(1px) prevents Z-fighting with the base ring */
+  animation: torus-spin-overlay 16s linear infinite;
+}
+
+@keyframes torus-spin-base {
+  0% { transform: rotateX(65deg) rotateY(-15deg) rotateZ(0deg); }
+  100% { transform: rotateX(65deg) rotateY(-15deg) rotateZ(360deg); }
+}
+
+@keyframes torus-spin-overlay {
+  /* Reverse rotation for intersecting gradient magic */
+  0% { transform: rotateX(65deg) rotateY(-15deg) translateZ(1px) rotateZ(360deg); }
+  100% { transform: rotateX(65deg) rotateY(-15deg) translateZ(1px) rotateZ(0deg); }
+}
+
+@keyframes torus-pulse {
+  0% { transform: translateZ(-50px) scale(0.9); opacity: 0.5; }
+  100% { transform: translateZ(-50px) scale(1.2); opacity: 1; }
+}
+
+.torus-svg-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}

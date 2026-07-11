@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap');
+
+.hero-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0a0a0c;
+  overflow: hidden;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Authentic Photoshop transparent background checkerboard */
+.checkerboard-bg {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: 
+    linear-gradient(45deg, #151517 25%, transparent 25%), 
+    linear-gradient(-45deg, #151517 25%, transparent 25%), 
+    linear-gradient(45deg, transparent 75%, #151517 75%), 
+    linear-gradient(-45deg, transparent 75%, #151517 75%);
+  background-size: 40px 40px;
+  background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+  opacity: 0.6;
+  z-index: 0;
+}
+
+/* Typography Container */
+.hero-text-container {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  transform: scaleY(1.05); /* Slight vertical stretch for that wide pro look */
+}
+
+.hero-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Text Styling matching the reference image */
+.subtitle {
+  color: #777777;
+  font-size: 1.2vw;
+  letter-spacing: 0.3em;
+  font-weight: 900;
+  margin-bottom: -0.5vw;
+  margin-left: 0.5vw;
+}
+
+.title-outline {
+  font-size: 11vw;
+  line-height: 0.85;
+  margin: 0;
+  color: transparent;
+  -webkit-text-stroke: 2px #e0e0e0;
+  text-transform: uppercase;
+}
+
+.title-filled {
+  font-size: 11vw;
+  line-height: 0.85;
+  margin: 0;
+  color: #e0e0e0;
+  text-transform: uppercase;
+}
+
+/* 3D Overlay Container */
+.hero-3d-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  pointer-events: none; /* Let text be selectable underneath */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Re-enable interaction strictly on the 3D canvas so we can drag/orbit the ring */
+.hero-3d-overlay > * {
+  pointer-events: auto;
+}
